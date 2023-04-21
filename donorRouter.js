@@ -10,7 +10,7 @@ donorRouter.post('/createDonor',createDonor)
 
 async function createDonor(req,res){
     const {name,blood_group,medical_report,address,contact_number,blood_bank,available_units}=req.body
-    const result=await queryDb('INSERT INTO donor (name, blood_group,medical_report,address,contact_number,blood_bank,available_units) VALUES($1,$2,$3,$4,$5,$6,$7)')
+    const result=await queryDb('INSERT INTO donor (name, blood_group,medical_report,address,contact_number,blood_bank,available_units) VALUES($1,$2,$3,$4,$5,$6,$7)',[name,blood_group,medical_report,address,contact_number,blood_bank,available_units],res)
     res.status(200).end(JSON.stringify(result.rows))
 }
 
